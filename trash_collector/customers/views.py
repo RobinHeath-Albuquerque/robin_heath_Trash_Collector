@@ -1,6 +1,9 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Customer
+from django.urls import reverse
+
+
 # Create your views here.
 
 # TODO: Create a function for each path created in customers/urls.py. Each will need a template as well.
@@ -9,7 +12,12 @@ from .models import Customer
 def index(request):
     # get the logged in user within any view function
     user = request.user
-    # This will be useful while creating a customer to assign the logged in user as the user foreign key
-    # Will also be useful in any function that needs
+    all_customers = Customer.objects.all()
+    context = {
+        'all_customers': all_customers
+    }
+
     print(user)
-    return render(request, 'customers/index.html')
+    return render(request, 'customers/index.html', context)
+
+

@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.apps import apps
+from .models import Employees
+
 
 # Create your views here.
 
@@ -9,5 +11,7 @@ from django.apps import apps
 
 def index(request):
     # Get the Customer model from the other app, it can now be used to query the db
-    Customer = apps.get_model('customers.Customer')
+    employees = apps.get_model('employees.Employees')
+
     return render(request, 'employees/index.html')
+
