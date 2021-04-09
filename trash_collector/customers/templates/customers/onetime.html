@@ -14,12 +14,21 @@
 
 <div class="input-group">
   <span class="input-group-text">Usual Pick Up Day</span>
-  <input type="text" aria-label="Day of Week" class="form-control">
+    <input type="text" aria-label="Day of Week" class="form-control">
+</div>
+<div>
    <span class="input-group-text">Requested Pick Up Day</span>
   <input type= "text" aria-label="Day of Week" class="form-control">
-  <a class="btn btn-primary" href="#" role="button">Link</a>
-  <input class="btn btn-primary" type="submit" value="Submit">
-
 </div>
-<p>Your One Time Pick Up Request has been Submitted!</p>
+
+    <button onclick="myFunction()">Submit</button>
+    <p id="demo"></p>
+
+
+<script>
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Your request for a one time pick up has been submitted.";
+}
+</script>
 {% endblock %}

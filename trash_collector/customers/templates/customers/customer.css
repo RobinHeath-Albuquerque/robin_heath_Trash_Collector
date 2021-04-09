@@ -25,3 +25,10 @@ $input-group-addon-color:               $input-color;
 $input-group-addon-bg:                  $gray-200;
 $input-group-addon-border-color:        $input-border-color;
 
+
+$form-group-addon-padding-y:           $input-padding-y;
+$form-group-addon-padding-x:           $input-padding-x;
+$form-group-addon-font-weight:         $input-font-weight;
+$form-group-addon-color:               $input-color;
+$form-group-addon-bg:                  $gray-200;
+$form-group-addon-border-color:        $input-border-color;

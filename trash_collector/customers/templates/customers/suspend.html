@@ -12,14 +12,24 @@
 
 
 <body>
-<div class="input-group">
+<div>
+   
   <span class="input-group-text">Suspend Start Date</span>
   <input type="text" aria-label="Start Date" class="form-control">
+ </div>
+<div>
    <span class="input-group-text">Suspend End Date</span>
   <input type= "text" aria-label="End Date" class="form-control">
-  <a class="btn btn-primary" href="#" role="button">Link</a>
-  <input class="btn btn-primary" type="submit" value="Submit">
-
 </div>
-<p>Your request to suspend your service has been submitted!!</p>
+  <button onclick="myFunction()">Submit</button>
+    <p id="demo"></p>
+
+
+<script>
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Your suspend request has been submitted.";
+}
+</script>
+
 {% endblock %}
