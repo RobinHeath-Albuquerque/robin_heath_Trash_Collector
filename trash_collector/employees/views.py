@@ -1,6 +1,8 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.apps import apps
+from django.urls import reverse
+
 from .models import Employees
 
 
@@ -29,3 +31,14 @@ def one_time_pick_up_due_out(request):
 def active_accounts(request):
     context = {}
     return render(request, 'employees/active_accounts.html', context)
+
+
+def create(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        zip_code = request.POST.get('zip_code')
+        new_employee = Employees(name=name, zip_code=zip_code)
+        new_employee.save()
+        return HttpResponseRedirect(reverse('employees:index'))
+    else:
+        return render(request, 'employees/create.html')

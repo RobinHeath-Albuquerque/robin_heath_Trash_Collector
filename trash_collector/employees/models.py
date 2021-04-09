@@ -7,7 +7,7 @@ from django.db import models
 
 class Employees(models.Model):
     name = models.CharField(max_length=50, default=0)
-    zip_code = models.IntegerField(default=0)
+    zip_code = models.CharField(max_length=6)
 
     def __str__(self):
         return self.name
