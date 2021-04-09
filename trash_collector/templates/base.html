@@ -17,11 +17,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Customer Information</a>
-        <a class="nav-link" href="#">Change Pick Up Day</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'customers:custinfo'%}">Customer Information</a>
+        <a class="nav-link" href="{% url 'customers:change'%}">Change Pick Up Day</a>
         <a class="nav-link" href="#">Account Balance</a>
-        <a class="nav-link" href="#">Suspend Account</a>
-        <a class="nav-link" href="#">One Time Pick Up</a></p>
+        <a class="nav-link" href="{% url 'customers:suspend'%}">Suspend Account</a>
+        <a class="nav-link" href="{% url 'customers:onetime'%}">One Time Pick Up</a></p>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbrNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="{% url 'employees:localzip_employee'%}">Customers in local zip code</a>
         <a class="nav-link" href="{% url 'employees:one_time_pick_up_due_out'%}">One time Pick Up Due out</a>

@@ -9,4 +9,10 @@ app_name = "customers"
 urlpatterns = [
     path('', views.index, name="index"),
     path('accounts/', include('django.contrib.auth.urls')),
-]
+    path('custinfo/', views.custinfo, name='custinfo'),
+    path('onetime/', views.onetime, name='onetime'),
+    path('change/', views.change, name='change'),
+    path('suspend/', views.suspend, name='suspend')
+
+        ]
+

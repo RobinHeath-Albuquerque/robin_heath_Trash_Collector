@@ -21,3 +21,21 @@ def index(request):
     return render(request, 'customers/index.html', context)
 
 
+def custinfo(request):
+    context = {}
+    return render(request, 'customers/custinfo.html', context)
+
+
+def onetime(request):
+    context = {}
+    return render(request, 'customers/onetime.html', context)
+
+
+def change(request):
+    context = {}
+    return render(request, 'customers/change.html', context)
+
+
+def suspend(request):
+    context = {}
+    return render(request, 'customers/suspend.html', context)
