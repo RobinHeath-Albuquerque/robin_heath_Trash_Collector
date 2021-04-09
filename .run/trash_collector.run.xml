@@ -1,14 +1,14 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="trash_collector" type="PythonConfigurationType" factoryName="Python">
-    <module name="trash_collector_starter" />
+    <module name="robin_heath_Trash_Collector" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
       <env name="PYTHONUNBUFFERED" value="1" />
     </envs>
-    <option name="SDK_HOME" value="" />
+    <option name="SDK_HOME" value="C:\Users\15053\AppData\Local\Microsoft\WindowsApps\python3.9.exe" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/trash_collector" />
-    <option name="IS_MODULE_SDK" value="true" />
+    <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <option name="SCRIPT_NAME" value="$PROJECT_DIR$/trash_collector/manage.py" />
