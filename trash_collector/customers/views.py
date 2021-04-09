@@ -42,7 +42,7 @@ def create(request):
         address = request.POST.get('address')
         zip_code = request.POST.get('zip_code')
         service_day = request.POST.get('service_day')
-        new_customer = Customer(name=name, address= address, zip_code=zip_code, service_day=service_day)
+        new_customer = Customer(name=name, address=address, zip_code=zip_code, service_day=service_day, user=request.user)
         new_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:

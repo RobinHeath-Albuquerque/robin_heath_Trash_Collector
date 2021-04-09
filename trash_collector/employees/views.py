@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.apps import apps
 from django.urls import reverse
 
+
 from .models import Employees
 
 
@@ -19,7 +20,15 @@ def index(request):
 
 
 def localzip_employee(request):
-    context = {}
+   if '<Customer.customers>'.objects.zip_code == Employees.zip_code:
+       pass
+       selected_customers = '<Customer.customers>'.objects
+   else:
+       #display nothing exists
+
+    context = {
+        'selected_customers': selected_customers
+    }
     return render(request, 'employees/localzip_employee.html', context)
 
 
