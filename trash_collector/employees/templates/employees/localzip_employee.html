@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
+{% block title %}{% block header %} Customers in Local Zip {% endblock %}{% endblock %}
 
 {% block content %}
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!
-It is Today day of the week!<br> Remember your pickups
+These are the customers within your local zip code!
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>

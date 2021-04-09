@@ -15,3 +15,17 @@ def index(request):
 
     return render(request, 'employees/index.html')
 
+
+def localzip_employee(request):
+    context = {}
+    return render(request, 'employees/localzip_employee.html', context)
+
+
+def one_time_pick_up_due_out(request):
+    context = {}
+    return render(request, 'employees/one_time_pick_up_due_out.html', context)
+
+
+def active_accounts(request):
+    context = {}
+    return render(request, 'employees/active_accounts.html', context)

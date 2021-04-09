@@ -26,7 +26,21 @@
   </div>
 </nav></p>
     {% elif group.name == "Employees" %}
-    <p>Employee Navbar</p>
+     <p><nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Employee Navigation</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="{% url 'employees:localzip_employee'%}">Customers in local zip code</a>
+        <a class="nav-link" href="{% url 'employees:one_time_pick_up_due_out'%}">One time Pick Up Due out</a>
+        <a class="nav-link" href="{% url 'employees:active_accounts'%}">Active Accounts</a>
+      </div>
+    </div>
+  </div>
+</nav></p>
     {% endif %}
   {% endfor %}
   <p><a href="{% url 'logout' %}">Log Out</a></p>
