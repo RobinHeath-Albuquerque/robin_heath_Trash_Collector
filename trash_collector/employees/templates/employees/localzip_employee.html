@@ -6,6 +6,8 @@
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!
 These are the customers within your local zip code!
+{% for customer in selected_customers %}
+{{employee.name}}
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
