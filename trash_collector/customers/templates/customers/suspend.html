@@ -1,6 +1,15 @@
-{% extends 'base.html %}
+{% extends 'base.html' %}
+{% block title %}{% block header %}Please use this form to Suspend service {% endblock %}{% endblock %}
 
-{% block header %}Please Use This Form to Suspend Service{% endblock %}
+{% block content %}
+  {% if user.is_authenticated %}
+    Hello Customer {{ user.username }}!
+ {% else %}
+    <p>You are at the Customer index, but you are not logged in.</p>
+    <a href="{% url 'login' %}">Log In</a>
+    <a href="{% url 'accounts:register' %}">Sign Up</a>
+  {% endif %}
+
 
 <body>
 <div class="input-group">
@@ -13,4 +22,4 @@
 
 </div>
 <p>Your request to suspend your service has been submitted!!</p>
-</body>
+{% endblock %}

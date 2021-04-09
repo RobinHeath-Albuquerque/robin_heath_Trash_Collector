@@ -36,6 +36,19 @@ def change(request):
     return render(request, 'customers/change.html', context)
 
 
+def create(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        address = request.POST.get('address')
+        zip_code = request.POST.get('zip_code')
+        service_day = request.POST.get('service_day')
+        new_customer = Customer(name=name, address= address, zip_code=zip_code, service_day=service_day)
+        new_customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        return render(request, 'customers/create.html')
+
+
 def suspend(request):
     context = {}
     return render(request, 'customers/suspend.html', context)

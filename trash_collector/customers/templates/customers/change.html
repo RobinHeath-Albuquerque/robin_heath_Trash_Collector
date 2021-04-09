@@ -1,8 +1,17 @@
-{% extends 'base.html %}
+{% extends 'base.html' %}
+{% block title %}{% block header %}Please use this form to Change your Regular Pick Up Day {% endblock %}{% endblock %}
 
-{% block header %}Please Use This Form to Change Your Regular Pick Up Day{% endblock %}
+{% block content %}
+  {% if user.is_authenticated %}
+    Hello Customer {{ user.username }}!
+ {% else %}
+    <p>You are at the Customer index, but you are not logged in.</p>
+    <a href="{% url 'login' %}">Log In</a>
+    <a href="{% url 'accounts:register' %}">Sign Up</a>
+  {% endif %}
 
-<body>
+
+
 <div class="input-group">
   <span class="input-group-text">Usual Pick Up Day</span>
   <input type="text" aria-label="Day of Week" class="form-control">
@@ -13,4 +22,4 @@
 
 </div>
 <p>Your Change Request has been Submitted!</p>
-</body>
+{% endblock %}
