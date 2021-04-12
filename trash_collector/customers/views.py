@@ -48,7 +48,6 @@ def create(request):
     else:
         return render(request, 'customers/create.html')
 
-
 def suspend(request):
     context = {}
     return render(request, 'customers/suspend.html', context)

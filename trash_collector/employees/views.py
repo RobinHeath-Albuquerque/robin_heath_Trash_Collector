@@ -20,18 +20,18 @@ def index(request):
 
 
 def localzip_employee(request):
-   if '<Customer.customers>'.objects.zip_code == Employees.zip_code:
-       pass
-       selected_customers = '<Customer.customers>'.objects
-   else:
-       #display nothing exists
-
-    context = {
-        'selected_customers': selected_customers
-    }
-    return render(request, 'employees/localzip_employee.html', context)
-
-
+    user = request.user
+    employee = Employees.object.get(user_id=user.id)
+    Customer = apps.get_model('customers.Customer')
+    customers = Customer.objects.all()
+    same_zipcode =[]
+    for customer in customers:
+        if customer.zip_code == employee.zip_code:
+            same_zipcode.append(customer)
+            context = {
+                'customers': same_zipcode
+            }
+    return render(request, 'employees/index.html', context)
 def one_time_pick_up_due_out(request):
     context = {}
     return render(request, 'employees/one_time_pick_up_due_out.html', context)
@@ -44,9 +44,11 @@ def active_accounts(request):
 
 def create(request):
     if request.method == 'POST':
+        user = request.user
         name = request.POST.get('name')
         zip_code = request.POST.get('zip_code')
         new_employee = Employees(name=name, zip_code=zip_code)
+        new_employee.user_id = user.id
         new_employee.save()
         return HttpResponseRedirect(reverse('employees:index'))
     else:

@@ -14,7 +14,7 @@ class User(AbstractUser):
 
 
 class Accounts(models.Model):
-    user = models.ForeignKey('accounts.User', default=0, on_delete=models.CASCADE)
+    user = models.ForeignKey('accounts.User', null=True, on_delete=models.CASCADE)
     account_balance = models.IntegerField(default=0)
 
     def __str__(self):
