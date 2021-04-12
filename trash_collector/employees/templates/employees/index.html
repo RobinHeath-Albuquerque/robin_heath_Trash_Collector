@@ -5,18 +5,17 @@
 {% block content %}
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!
-{% if customer != null %}
+
 
 {% for customer in customers %}
   <ul>
     <li><h style="fontsize: 4vw"> Name: {{customer.name}}<br>  </h>
         <h>address: {{customer.address}} <br></h>
-        <h>zipcode: {{customer.zipcode}}<br></h>
-        <h>pickup day: {{customer.pickup_day}}<br></h>
+        <h>zipcode: {{customer.zip_code}}<br></h>
+        <h>pickup day: {{customer.service_day}}<br></h>
     </li>
   </ul>
 {% endfor %}
-{% endif %}
 It is Today day of the week!<br> Remember your pickups
 <a href="{% url 'employees:localzip_employee' %}">pickups</a>
   {% else %}
