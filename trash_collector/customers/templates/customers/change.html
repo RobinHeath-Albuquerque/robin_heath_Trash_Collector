@@ -10,25 +10,12 @@
     <a href="{% url 'accounts:register' %}">Sign Up</a>
   {% endif %}
 
-
-
-<div class="input-group">
-  <span class="input-group-text">Usual Pick Up Day</span>
-  <input type="text" aria-label="Day of Week" class="form-control"><br>
-</div>
 <div>
-   <span class="input-group-text">Requested Pick Up Day</span>
-  <input type= "text" aria-label="Day of Week" class="form-control"><br>
-</div>
+<form action="{% url 'customers:change' %}" method="POST">
+    {% csrf_token %}
+    new_service_day:<input type="text" name="service_day" id="service_day"><br>
+    <input type="submit" value ="submit">
 
-    <button onclick="myFunction()">Submit</button>
-    <p id="demo"></p>
+</form></div>
 
-
-<script>
-
-function myFunction() {
-  document.getElementById("demo").innerHTML = "Your change request has been submitted.";
-}
-</script>
 {% endblock %}

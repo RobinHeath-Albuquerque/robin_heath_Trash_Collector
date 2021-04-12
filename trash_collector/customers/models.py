@@ -12,9 +12,10 @@ class Customer(models.Model):
     address = models.CharField(max_length=50, default=None)
     zip_code = models.CharField(max_length=5, default=None)
     service_day = models.CharField(max_length=50, default=None)
+    one_time_day = models.CharField(max_length=50, default=None)
+    account_balance = models.CharField(max_length=50, default=None)
+    account_date_range = models.CharField(max_length=50, default=None)
+    account_active = models.CharField(max_length=50, default=None)
 
     def __str__(self):
         return self.name
-
-
-

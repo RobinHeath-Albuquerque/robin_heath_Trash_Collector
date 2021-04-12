@@ -26,14 +26,31 @@ def custinfo(request):
     return render(request, 'customers/custinfo.html', context)
 
 
-def onetime(request):
+def one_time_day(request):
+    if request.method == 'POST':
+        user = request.user
+        customer = Customer.objects.get(user_id=user.id)
+        customer.one_time_day = request.POST.get('one_time_day')
+        customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+
+    return render(request, 'customers/one_time_day.html')
+
+
+def suspend(request):
     context = {}
-    return render(request, 'customers/onetime.html', context)
+    return render(request, 'customers/suspend.html', context)
 
 
 def change(request):
-    context = {}
-    return render(request, 'customers/change.html', context)
+    if request.method == 'POST':
+        user = request.user
+        customer = Customer.objects.get(user_id=user.id)
+        customer.service_day = request.POST.get('service_day')
+        customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        return render(request, 'customers/change.html')
 
 
 def create(request):
@@ -50,9 +67,5 @@ def create(request):
     else:
         return render(request, 'customers/create.html')
 
-
-def suspend(request):
-    context = {}
-    return render(request, 'customers/suspend.html', context)
 
 

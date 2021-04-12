@@ -10,9 +10,10 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('create/', views.create, name='create'),
-    path('onetime/', views.onetime, name='onetime'),
+    path('one_time_day/', views.one_time_day, name='one_time_day'),
     path('change/', views.change, name='change'),
     path('suspend/', views.suspend, name='suspend')
+
 
         ]
 
