@@ -16,8 +16,16 @@
     </li>
   </ul>
 {% endfor %}
-It is Today day of the week!<br> Remember your pickups
-<a href="{% url 'employees:localzip_employee' %}">pickups</a>
+ Remember your pickups<br>
+
+<a href="{% url 'employees:localzip_employee_monday' %}">pickups in your local zip code monday</a><br>
+<a href="{% url 'employees:localzip_employee_tuesday' %}">pickups in your local zip code tuesday</a><br>
+<a href="{% url 'employees:localzip_employee_wednesday' %}">pickups in your local zip code wednesday</a><br>
+<a href="{% url 'employees:localzip_employee_thursday' %}">pickups in your local zip code thursday</a><br>
+<a href="{% url 'employees:localzip_employee_friday' %}">pickups in your local zip code friday</a><br>
+<a href="{% url 'employees:localzip_employee_saturday' %}">pickups in your local zip code saturday</a><br>
+<a href="{% url 'employees:localzip_employee_sunday' %}">pickups in your local zip code sunday</a><br>
+<a href="{% url 'employees:same_service_day_employee' %}">Today's One time Pickups</a>
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
