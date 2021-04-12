@@ -13,15 +13,10 @@ Please enter your account information <br>
     address:<input type="text" name="address" id="address"><br>
     zip_code:<input type="text" name="zip_code" id="zip_code"><br>
     service_day:<input type="text" name="service_day" id="service_day"><br>
+    <input type="submit" value ="submit">
  </form>
 </div>
-<button onclick="myFunction()">Submit</button>
-    <p id="demo"></p>
-<script>
-function myFunction() {
-  document.getElementById("demo").innerHTML = "Your account information has been submitted.";
-}
-</script>
+</form>
   {% else %}
     <p>You are at the customer index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>

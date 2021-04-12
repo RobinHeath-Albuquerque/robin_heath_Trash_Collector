@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}{% block header %}Account Information {% endblock %}{% endblock %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    Hello Customer {{ user.username }}!
+ {% else %}
+    <p>You are at the Customer index, but you are not logged in.</p>
+    <a href="{% url 'login' %}">Log In</a>
+    <a href="{% url 'accounts:register' %}">Sign Up</a>
+  {% endif %}
+
+
+
+<div class="input-group">
+  <span class="input-group-text">User Name</span>
+  <input type="text" aria-label="User Name" class="form-control"><br>
+</div>
+
+    <button onclick="myFunction()">Submit</button>
+    <p id="demo"></p>
+
+
+<script>
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Your account balance is ''.";
+}
+</script>
+{% endblock %}

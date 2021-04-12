@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.apps import apps
 from django.urls import reverse
 
-
 from .models import Employees
 
 
@@ -22,9 +21,9 @@ def index(request):
 def localzip_employee(request):
     user = request.user
     employee = Employees.object.get(user_id=user.id)
-    Customer = apps.get_model('customers.Customer')
+    Customer: object = apps.get_model('customers.Customer')
     customers = Customer.objects.all()
-    same_zipcode =[]
+    same_zipcode = []
     for customer in customers:
         if customer.zip_code == employee.zip_code:
             same_zipcode.append(customer)
@@ -32,6 +31,8 @@ def localzip_employee(request):
                 'customers': same_zipcode
             }
     return render(request, 'employees/index.html', context)
+
+
 def one_time_pick_up_due_out(request):
     context = {}
     return render(request, 'employees/one_time_pick_up_due_out.html', context)
