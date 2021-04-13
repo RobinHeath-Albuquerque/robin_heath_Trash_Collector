@@ -31,6 +31,21 @@ def localzip_employee(request):
     return render(request, 'employees/index.html', context)
 
 
+def customer_in_zip(request):
+    user = request.user
+    employee = Employees.objects.get(user_id=user.id)
+    Customer = apps.get_model('customers.Customer')
+    customers = Customer.objects.all()
+    same_zip = []
+    for customer in customers:
+        if customer.zip_code == employee.zip_code:
+            same_zip.append(customer)
+            context = {
+                'customers': same_zip
+            }
+    return render(request, 'employees/index.html', context)
+
+
 def one_time_pick_up(request):
     user = request.user
     employee = Employees.objects.get(user_id=user.id)
@@ -43,7 +58,7 @@ def one_time_pick_up(request):
             context = {
                 'customers': same_service_day
             }
-    return render(request, 'employees/index.html', context)
+    return render(request, 'employees/customer_in_zip.html', context)
 
 
 def define_day(request):
