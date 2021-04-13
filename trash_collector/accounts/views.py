@@ -1,5 +1,5 @@
 from django.contrib.auth import login
-from django.http import HttpResponse
+from django.http import HttpResponse, request, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -14,3 +14,8 @@ class RegisterView(generic.CreateView):
     form_class = CustomUserForm
     success_url = reverse_lazy('login')
     template_name = 'registration/register.html'
+
+
+
+
+
