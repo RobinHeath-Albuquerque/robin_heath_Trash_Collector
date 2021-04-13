@@ -44,7 +44,8 @@ def account_suspend(request):
     if request.method == 'POST':
         user = request.user
         customer = Customer.objects.get(user_id=user.id)
-        customer.account_suspend = request.POST.get('account_suspend')
+        customer.suspend_start = request.POST.get('suspend_start')
+        customer.suspend_end = request.POST.get('suspend_end')
         customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
 
