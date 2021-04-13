@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{% block header %}Please use this form to request a one time pick up {% endblock %}{% endblock %}
+{% block title %}{% block header %}Please use this form to request a one time pick up. There is a $10 fee.  {% endblock %}{% endblock %}
 
 {% block content %}
   {% if user.is_authenticated %}
@@ -13,7 +13,7 @@
 <div>
 <form action="{% url 'customers:one_time_day' %}" method="POST">
     {% csrf_token %}
-    one_time_day:<input type="text" name="one_time_day" id="one_time_day">
+    one_time_day:<input type="date" name="one_time_day" id="one_time_day">
     <input type="submit" value ="submit">
 
 </form></div>

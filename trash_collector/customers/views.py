@@ -1,7 +1,10 @@
+from django.db.models.signals import post_save
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Customer
 from django.urls import reverse
+import decimal
+from django.dispatch import receiver
 
 
 # Create your views here.
@@ -21,9 +24,9 @@ def index(request):
     return render(request, 'customers/index.html', context)
 
 
-def custinfo(request):
+def account(request):
     context = {}
-    return render(request, 'customers/custinfo.html', context)
+    return render(request, 'customers/account.html', context)
 
 
 def one_time_day(request):
@@ -37,9 +40,15 @@ def one_time_day(request):
     return render(request, 'customers/one_time_day.html')
 
 
-def suspend(request):
-    context = {}
-    return render(request, 'customers/suspend.html', context)
+def account_suspend(request):
+    if request.method == 'POST':
+        user = request.user
+        customer = Customer.objects.get(user_id=user.id)
+        customer.account_suspend = request.POST.get('account_suspend')
+        customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+
+    return render(request, 'customers/account_suspend.html')
 
 
 def change(request):
@@ -66,6 +75,5 @@ def create(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/create.html')
-
 
 

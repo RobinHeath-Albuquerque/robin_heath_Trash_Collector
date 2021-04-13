@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{% block header %}Please use this form to Suspend service {% endblock %}{% endblock %}
+{% block title %}{% block header %}Please use this form to suspend your service. {% endblock %}{% endblock %}
 
 {% block content %}
   {% if user.is_authenticated %}
@@ -10,16 +10,15 @@
     <a href="{% url 'accounts:register' %}">Sign Up</a>
   {% endif %}
 
-
 <div>
-<form action="{% url 'customers:suspend %}" method="POST">
+<form action="{% url 'customers:account_suspend' %}" method="POST">
     {% csrf_token %}
-    suspend_start_date:<input type="text" name="suspend_start_date" id="suspend_start_date"><br>
-    suspend_end_date:<input type="text" name="suspend_end_date" id="suspend_end_date"><br>
+    suspend_start:<input type="date" name="suspend_start" id="suspend_start"><br>
+    suspend_end:<input type="date" name="suspend_end" id="suspend_end"><br>
     <input type="submit" value ="submit">
- </form>
-</div>
 
-
+</form></div>
 
 {% endblock %}
+
+
