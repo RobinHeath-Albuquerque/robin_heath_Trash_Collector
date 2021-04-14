@@ -22,12 +22,12 @@ def localzip_employee(request):
     customers = Customer.objects.all()
     same_zipcode = []
     for customer in customers:
-        if customer.zip_code == employee.zip_code and customer.service_day == employee.define_day:
+        if customer.zip_code == employee.zip_code and customer.service_day == employee.define_day and customer.account_active == True:
             same_zipcode.append(customer)
             context = {
                 'customers': same_zipcode
             }
-        elif customer.zip_code == employee.zip_code and customer.one_time_day == date.today():
+        elif customer.zip_code == employee.zip_code and customer.one_time_day == date.today() and customer.account_active == True:
             same_zipcode.append(customer)
             context = {
                 'customers': same_zipcode
