@@ -8,7 +8,7 @@
 Today's Date: <input type="text" value = "{% now 'y-m-d' %}"><br>
                      <form action="{% url 'employees:define_day' %}" method="POST"><br>
     {% csrf_token %}
-    input the day:<input type="text" name="define_day" id="define_day">
+    Please enter the day of the week:<input type="text" name="define_day" id="define_day">
     <input type="submit" value ="submit">
     <br></form>
 
@@ -24,8 +24,8 @@ Today's Date: <input type="text" value = "{% now 'y-m-d' %}"><br>
     </li>
   </ul>
 {% endfor %}
- Remember your pickups<br>
-<a href="{% url 'employees:localzip_employee' %}"> Active Account pickups in your local zip code today including one time pickups</a><br>
+<br>
+<a href="{% url 'employees:localzip_employee' %}"> These are your filtered pickups! click here to see where you need to go.</a><br>
 
 
   {% endif %}

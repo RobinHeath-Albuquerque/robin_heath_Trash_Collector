@@ -5,7 +5,7 @@
 {% block content %}
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!
-You have confirmed the pick up for {{customer.name}}<br>
+You have confirmed the pick up for {{customer.name}} at {{customer.address}}<br>
 {{customer.name}} account balance has increased to {{customer.account_balance}}
 
   {% else %}

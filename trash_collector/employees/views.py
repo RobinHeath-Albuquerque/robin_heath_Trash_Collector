@@ -47,7 +47,7 @@ def customer_in_zip(request):
             context = {
                 'customers': same_zip
             }
-    return render(request, 'employees/index.html', context)
+    return render(request, 'employees/customer_in_zip.html', context)
 
 
 def one_time_pick_up(request):
