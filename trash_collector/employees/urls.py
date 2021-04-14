@@ -9,5 +9,6 @@ urlpatterns = [
     path('customer_in_zip', views.customer_in_zip, name='customer_in_zip'),
     path('one_time_pick_up/', views.one_time_pick_up, name='one_time_pick_up'),
     path('active_accounts/', views.active_accounts, name='active_accounts'),
+    path('confirm_pickup/<int:customer_id>/', views.confirm_pickup, name='confirm_pickup'),
     path('create/', views.create, name='create')
 ]

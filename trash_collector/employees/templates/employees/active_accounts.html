@@ -1,11 +1,20 @@
-{% extends 'base.html' %}
+<{% extends 'base.html' %}
 
 {% block title %}{% block header %}Active Accounts {% endblock %}{% endblock %}
 
 {% block content %}
   {% if user.is_authenticated %}
-    Hello Employee {{ user.username }}!
-This is a list of the customer active accounts
+    Hello Employee {{ user.username }} This is a list of active customer accounts
+{% for customer in customers %}
+  <ul>
+    <li><h style="fontsize: 4vw"> Name: {{customer.name}}<br>  </h>
+        <h>address: {{customer.address}} <br></h>
+        <h>zipcode: {{customer.zip_code}}<br></h>
+        <h>pickup day: {{customer.service_day}}<br></h>
+        <h>one time pick up: {{customer.one_time_day}}<br></h>
+    </li>
+  </ul>
+{% endfor %}
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>

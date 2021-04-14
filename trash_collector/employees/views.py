@@ -20,7 +20,6 @@ def localzip_employee(request):
     employee = Employees.objects.get(user_id=user.id)
     Customer: object = apps.get_model('customers.Customer')
     customers = Customer.objects.all()
-    service_day_saturday = 'saturday'
     same_zipcode = []
     for customer in customers:
         if customer.zip_code == employee.zip_code and customer.service_day == employee.define_day:
@@ -73,7 +72,15 @@ def define_day(request):
 
 
 def active_accounts(request):
-    context = {}
+    Customer = apps.get_model('customers.Customer')
+    customers = Customer.objects.all()
+    active_account = []
+    for customer in customers:
+        if customer.account_active:
+            active_account.append(customer)
+            context = {
+                'customers': active_account
+            }
     return render(request, 'employees/active_accounts.html', context)
 
 
@@ -93,3 +100,14 @@ def create(request):
 def showdate(request):
     datetime.datetime.now()
     return render(request, 'employees/index.html')
+
+
+def confirm_pickup(request, customer_id):
+    Customer = apps.get_model('customers.Customer')
+    customer = Customer.objects.get(user_id=customer_id)
+    customer.account_balance += 25
+    customer.save()
+    context = {
+        'customer': customer
+    }
+    return render(request, 'employees/confirm_pickup.html', context)

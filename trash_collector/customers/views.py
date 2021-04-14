@@ -46,6 +46,7 @@ def account_suspend(request):
         customer = Customer.objects.get(user_id=user.id)
         customer.suspend_start = request.POST.get('suspend_start')
         customer.suspend_end = request.POST.get('suspend_end')
+        customer.account_active = False
         customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
 

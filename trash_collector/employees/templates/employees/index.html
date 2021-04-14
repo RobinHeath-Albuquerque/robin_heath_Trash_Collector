@@ -15,6 +15,7 @@ Today's Date: <input type="text" value = "{% now 'y-m-d' %}"
         <h>zipcode: {{customer.zip_code}}<br></h>
         <h>pickup day: {{customer.service_day}}<br></h>
         <h>one time pick up: {{customer.one_time_day}}<br></h>
+        <a href=" {% url 'employees:confirm_pickup' customer.id %}"> Confirm pickup</a>
     </li>
   </ul>
 {% endfor %}
@@ -23,7 +24,7 @@ Today's Date: <input type="text" value = "{% now 'y-m-d' %}"
     {% csrf_token %}
     input the day:<input type="text" name="define_day" id="define_day">
     <input type="submit" value ="submit">
-    <br>
+    <br></form>
 <a href="{% url 'employees:localzip_employee' %}">pickups in your local zip code today</a><br>
 <a href="{% url 'employees:one_time_pick_up' %}">Today's One time Pickups</a>
 
