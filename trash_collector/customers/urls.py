@@ -10,13 +10,11 @@ from . import views
 app_name = "customers"
 urlpatterns = [
     path('', views.index, name="index"),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('create/', views.create, name='create'),
     path('one_time_day/', views.one_time_day, name='one_time_day'),
     path('change/', views.change, name='change'),
     path('account_suspend/', views.account_suspend, name='account_suspend'),
-    path('account/', views.account, name='account'),
-    path('check_balance/', views.check_balance, name='check_balance')
+    path('account/', views.account, name='account')
 
 
 

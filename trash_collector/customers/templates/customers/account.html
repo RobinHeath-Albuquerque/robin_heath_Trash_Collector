@@ -1,23 +1,17 @@
 {% extends 'base.html' %}
-{% block title %}{% block header %}Check Your Balance Here {% endblock %}{% endblock %}
+{% block title %}{% block header %}Account Balance {% endblock %}{% endblock %}
 
 {% block content %}
   {% if user.is_authenticated %}
-    Hello Customer {{ user.username }}!
+   {{customer.name}} Your account balance is {{customer.account_balance}}
  {% else %}
     <p>You are at the Customer index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
     <a href="{% url 'accounts:register' %}">Sign Up</a>
   {% endif %}
 
-<div>
-
-    <input type="submit" value ="submit">
-
-</div>
 
 {% endblock %}
-
 
 
 
