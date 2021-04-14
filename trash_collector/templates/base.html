@@ -29,12 +29,13 @@
     {% elif group.name == "Employees" %}
      <p><nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Employee Navigation</a>
+    <a class="navbar-brand" href="{% url 'employees:index'%}">Employee Navigation</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbrNavAltMarkup">
       <div class="navbar-nav">
+        <a class="nav-link" href="{% url 'employees:create'%}">Add New Employee Info</a>
         <a class="nav-link" href="{% url 'employees:active_accounts'%}">Active Accounts</a>
         <a class="nav-link" href="{% url 'employees:customer_in_zip'%}">Customers in local zip</a>
       </div>

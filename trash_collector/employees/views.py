@@ -27,6 +27,11 @@ def localzip_employee(request):
             context = {
                 'customers': same_zipcode
             }
+        elif customer.zip_code == employee.zip_code and customer.one_time_day == date.today():
+            same_zipcode.append(customer)
+            context = {
+                'customers': same_zipcode
+            }
     return render(request, 'employees/index.html', context)
 
 
@@ -104,7 +109,7 @@ def showdate(request):
 
 def confirm_pickup(request, customer_id):
     Customer = apps.get_model('customers.Customer')
-    customer = Customer.objects.get(user_id=customer_id)
+    customer = Customer.objects.get(pk=customer_id)
     customer.account_balance += 25
     customer.save()
     context = {

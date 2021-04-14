@@ -10,7 +10,7 @@ class Employees(models.Model):
     name = models.CharField(max_length=50, default=None)
     zip_code = models.CharField(max_length=6, default=None)
     user = models.ForeignKey('accounts.User', default=None, on_delete=models.CASCADE)
-    define_day = models.CharField(max_length=50, default=None)
+    define_day = models.CharField(max_length=50, blank=None)
 
     def __str__(self):
         return self.name
