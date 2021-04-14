@@ -24,16 +24,15 @@ def index(request):
 def account(request):
     if request.method == 'GET':
         user = request.user
-        Customer=apps.get_model('customers.Customer')
+        Customer = apps.get_model('customers.Customer')
         customer = Customer.objects.get(user_id=user.id)
         context = {
-            'customer' : customer
+            'customer': customer
         }
 
         return render(request, 'customers/account.html', context)
     else:
         return HttpResponseRedirect(reverse('customers:index'))
-
 
 
 def one_time_day(request):
@@ -42,6 +41,7 @@ def one_time_day(request):
         customer = Customer.objects.get(user_id=user.id)
         customer.one_time_day = request.POST.get('one_time_day')
         customer.save()
+
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/one_time_day.html')
@@ -55,6 +55,7 @@ def account_suspend(request):
         customer.suspend_end = request.POST.get('suspend_end')
         customer.account_active = False
         customer.save()
+
         return HttpResponseRedirect(reverse('customers:index'))
     else:
 
@@ -67,6 +68,7 @@ def change(request):
         customer = Customer.objects.get(user_id=user.id)
         customer.service_day = request.POST.get('service_day')
         customer.save()
+
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/change.html')
@@ -85,5 +87,3 @@ def create(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/create.html')
-
-
