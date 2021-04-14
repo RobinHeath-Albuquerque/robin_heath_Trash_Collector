@@ -10,4 +10,5 @@
     <a href="{% url 'login' %}">Log In</a>
     <a href="{% url 'accounts:register' %}">Sign Up</a>
   {% endif %}
+Today's Date: <input type="text" value = "{% now 'y-m-d' %}"><br>
 {% endblock %}

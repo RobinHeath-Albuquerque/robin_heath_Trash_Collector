@@ -3,6 +3,8 @@ from django.db.models.signals import post_save
 from django.http import HttpResponse, HttpResponseRedirect, request
 from django.shortcuts import render
 from django.template import context
+from datetime import date
+import datetime
 
 from .models import Customer
 from django.urls import reverse
@@ -53,13 +55,27 @@ def account_suspend(request):
         customer = Customer.objects.get(user_id=user.id)
         customer.suspend_start = request.POST.get('suspend_start')
         customer.suspend_end = request.POST.get('suspend_end')
-        customer.account_active = False
         customer.save()
+<<<<<<< HEAD
 
+=======
+        check_account(request)
+>>>>>>> 3b4e16972b101569b872e160358b4489680fd394
         return HttpResponseRedirect(reverse('customers:index'))
     else:
 
         return render(request, 'customers/account_suspend.html')
+
+
+def check_account(request):
+    user = request.user
+    customer = Customer.objects.get(user_id=user.id)
+    if customer.suspend_start <= date.today() and customer.suspend_end >= date.today():
+        customer.account_active = False
+    else:
+        customer.account_active = True
+    customer.save()
+    return HttpResponseRedirect(reverse('customers:index'))
 
 
 def change(request):
@@ -87,3 +103,11 @@ def create(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/create.html')
+<<<<<<< HEAD
+=======
+
+
+def showdate(request):
+    datetime.datetime.now()
+    return render(request, 'customers/index.html')
+>>>>>>> 3b4e16972b101569b872e160358b4489680fd394

@@ -5,7 +5,12 @@
 {% block content %}
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!<br>
-Today's Date: <input type="text" value = "{% now 'y-m-d' %}"
+Today's Date: <input type="text" value = "{% now 'y-m-d' %}"><br>
+                     <form action="{% url 'employees:define_day' %}" method="POST"><br>
+    {% csrf_token %}
+    input the day:<input type="text" name="define_day" id="define_day">
+    <input type="submit" value ="submit">
+    <br></form>
 
 
 {% for customer in customers %}
@@ -20,13 +25,8 @@ Today's Date: <input type="text" value = "{% now 'y-m-d' %}"
   </ul>
 {% endfor %}
  Remember your pickups<br>
-<form action="{% url 'employees:define_day' %}" method="POST"><br>
-    {% csrf_token %}
-    input the day:<input type="text" name="define_day" id="define_day">
-    <input type="submit" value ="submit">
-    <br></form>
-<a href="{% url 'employees:localzip_employee' %}">pickups in your local zip code today</a><br>
-<a href="{% url 'employees:one_time_pick_up' %}">Today's One time Pickups</a>
+<a href="{% url 'employees:localzip_employee' %}"> Active Account pickups in your local zip code today including one time pickups</a><br>
+
 
   {% endif %}
 {% endblock %}
